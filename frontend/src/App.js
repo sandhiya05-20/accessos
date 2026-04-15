@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import LandingPage from './LandingPage';
+import EyeMode from './EyeMode';
+import TremorMode from './TremorMode';
 
 function App() {
+  const [mode, setMode] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {mode === null && <LandingPage setMode={setMode} />}
+      {mode === 'eye' && <EyeMode setMode={setMode} />}
+      {mode === 'tremor' && <TremorMode setMode={setMode} />}
     </div>
   );
 }
